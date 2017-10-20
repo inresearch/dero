@@ -6,5 +6,7 @@ class Issue
   field :starrers, type: Array
   field :status, type: String # open, ignored, resolved, deleted
   field :status_modifier, type: String
-  field :contexts, type: Array
+
+  embedded_in :panic
+  embeds_many :error_contexts
 end

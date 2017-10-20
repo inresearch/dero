@@ -4,4 +4,6 @@ class Project
   include Mongoid::Timestamps::Short
 
   field :name, type: String
+
+  has_many :panics
 end

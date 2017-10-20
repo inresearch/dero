@@ -5,4 +5,6 @@ class ErrorContext
   field :value, type: String
 
   attr_readonly :key, :value
+  
+  embedded_in :issue
 end
