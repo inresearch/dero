@@ -4,6 +4,10 @@ class Project
   include Mongoid::Timestamps::Short
 
   field :name, type: String
+  # index name
+  
+  validates_presence_of :name
+  validates_uniqueness_of :name
 
   has_many :panics
 end

@@ -12,4 +12,15 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+
+  config.before(:each) do
+    Project.delete_all
+    Issue.delete_all
+    CodeLine.delete_all
+    Panic.delete_all
+  end
+end
+
+def parsed_body
+  JSON.parse(response.body).deep_symbolize_keys
 end
