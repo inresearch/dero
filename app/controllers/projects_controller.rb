@@ -5,10 +5,11 @@ class ProjectsController < ApplicationController
     render json: ProjectSerializer.new(project).to_h
   end
 
-  def update
-  end
-
-  def delete
+  def destroy
+    project = Project.find(params[:id])
+    project.deleted_at = Time.current
+    project.save!
+    render json: ProjectSerializer.new(project).to_h
   end
 
   protected

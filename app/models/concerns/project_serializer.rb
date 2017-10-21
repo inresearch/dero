@@ -13,7 +13,9 @@ class ProjectSerializer
       id: project.id.to_s,
       name: project.name,
       created_at: project.created_at.to_f,
-      updated_at: project.updated_at.to_f
+      updated_at: project.updated_at.to_f,
+      deleted_at: project.deleted_at ? project.deleted_at.to_f : nil
     }
+    data
   end
 end
