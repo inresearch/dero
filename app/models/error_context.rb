@@ -1,3 +1,5 @@
+# For tagging additional context, or metadata about the error
+# as user see it fit to make it easier in the effort of debuggin
 class ErrorContext
   include Mongoid::Document
 

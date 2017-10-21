@@ -7,5 +7,5 @@ class CodeLine
   validates_presence_of :line_number, :code
   attr_readonly :line_number, :code
 
-  embedded_in :backtrace
+  embedded_in :panic 
 end
