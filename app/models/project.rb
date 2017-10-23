@@ -18,4 +18,8 @@ class Project
   def deleted?
     !deleted_at.blank?
   end
+
+  def name=(arg)
+    write_attribute(:name, arg.downcase)
+  end
 end

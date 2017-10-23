@@ -14,6 +14,10 @@ describe Panic do
       expect(panic.issues.first).to_not be_new_record
     end
 
+    it 'has fingerprint' do
+      expect(panic.fingerprint).to eq 'b9f3a8b611788ddf07369d35d518b377'
+    end
+
     it 'belongs to a project' do
       expect(panic.project).to eq project
       expect(panic.project).to_not be_new_record

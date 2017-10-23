@@ -14,7 +14,7 @@ RSpec.describe ProjectsController, type: :controller do
         errors: {},
         data: {
           id: Project.first.id.to_s,
-          name: "Dero",
+          name: "dero",
           created_at: 1602288000.0,
           updated_at: 1602288000.0,
           deleted_at: nil
@@ -46,7 +46,7 @@ RSpec.describe ProjectsController, type: :controller do
         errors: {},
         data: {
           id: Project.first.id.to_s,
-          name: 'Dero',
+          name: 'dero',
           created_at: 1602288000.0,
           updated_at: 1602288000.0,
           deleted_at: 1602288000.0

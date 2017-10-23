@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   rescue_from StandardError do |exception|
-    whitelisted = [Mongoid::Errors::Validations]
+    whitelisted = [Mongoid::Errors::Validations, Mongoid::Errors::DocumentNotFound]
     is_displayable = whitelisted.include?(exception.class)
 
     message = exception.message
