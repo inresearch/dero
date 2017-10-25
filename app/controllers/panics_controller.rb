@@ -1,6 +1,8 @@
 class PanicsController < ApplicationController
   def create
-    create_new
+    fingerprint = Panic.fingerprint(panic_params.to_h)
+    panic = Panic.where(fingerprint: fingerprint).first
+    panic ? update_panic(panic) : create_new
   end
 
   def panic_params
@@ -29,6 +31,13 @@ class PanicsController < ApplicationController
     panic = Panic.new(panic_params)
     panic.project = project
     panic.issues = [Issue.new(issue_params)]
+    panic.save
+  end
+
+  def update_panic(panic)
+    issue_params
+    issue = Issue.new(issue_params)
+    panic.issues << issue
     panic.save
   end
 end

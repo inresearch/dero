@@ -26,14 +26,14 @@ class Panic
 
   def self.fingerprint(states = {})
     states = states.with_indifferent_access
-    kls, file, line, msg = states.fetch(:kind),
-      states.fetch(:file),
-      states.fetch(:line),
-      states.fetch(:message)
+    kls, file, line, msg = states.fetch(:kind).to_s,
+      states.fetch(:file).to_s,
+      states.fetch(:line).to_s,
+      states.fetch(:message).to_s
     code_lines = [].tap do |lines|
       states.fetch(:code_lines).each do |line_def|
         line, code = line_def.fetch(:line), line_def.fetch(:code)
-        lines << [line, code]
+        lines << [line.to_s, code.to_s]
       end
     end
     data = [kls, file, line, msg, code_lines.to_s].join("==")

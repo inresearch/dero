@@ -6,7 +6,7 @@ def build_code_line(panic)
     [13, 'end']
   ].map do |data|
     line, code = data[0], data[1]
-    code_line = CodeLine.new(line_number: line, code: code)
+    code_line = CodeLine.new(line: line, code: code)
     code_line.panic = panic
     code_line
   end
@@ -35,10 +35,10 @@ end
 
 def build_panic(project)
   panic = Panic.new
-  panic.panic_class = StandardError.name
-  panic.panicked_file = "/var/app/calculator.rb"
-  panic.offending_line = 12
-  panic.panic_message = "Division by zero"
+  panic.kind = StandardError.name
+  panic.file = "/var/app/calculator.rb"
+  panic.line = 12
+  panic.message = "Division by zero"
 
   issues = []
   4.times do
@@ -58,4 +58,10 @@ def build_project
   project = Project.new
   project.name = "Dero"
   project
+end
+
+def to_fingerprint_params(panic)
+  attributes = panic.attributes 
+  attributes[:code_lines] = panic.code_lines.map(&:attributes)
+  attributes
 end

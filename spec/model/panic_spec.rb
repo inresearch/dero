@@ -6,6 +6,16 @@ describe Panic do
     project.save
   end
 
+  context 'static method' do
+    describe '#fingerprint' do
+      it 'calculates the fingerprint' do
+        fingerprint = Panic.fingerprint(to_fingerprint_params(panic))
+        data = %Q{StandardError==/var/app/calculator.rb==13==Division by zero==[["10", "i = i + 1"], ["11", "10.times do |i|"], ["12", "  i = i / 0"], ["13", "end"]]}
+        expect(fingerprint).to eq Digest::MD5.hexdigest(data)
+      end
+    end # fingerprint
+  end # static method
+
   context 'saved' do
     before { panic.save }
     
@@ -15,7 +25,7 @@ describe Panic do
     end
 
     it 'has fingerprint' do
-      expect(panic.fingerprint).to eq 'b9f3a8b611788ddf07369d35d518b377'
+      expect(panic.fingerprint).to_not be_blank
     end
 
     it 'belongs to a project' do

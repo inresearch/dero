@@ -60,8 +60,21 @@ RSpec.describe PanicsController, type: :controller do
 
     context 'exist similar panic' do
       it 'appends issues but no new panic is created' do
-        expect(0).to eq 1
+        post :create, params: params
+        p = Panic.first
+        params[:issue][:error_contexts] = [
+          {key: 'number_1', value: 5},
+          {key: 'number_2', value: 0}
+        ]
+        expect(Panic.all.count).to eq 1
+        expect(p.issues.count).to eq 1
+        sleep 1
+
+        post :create, params: params
+        p.reload
+        expect(Panic.all.count).to eq 1
+        expect(p.issues.count).to eq 2
       end
-    end
+    end # exist panic
   end # POST #create
 end # PanicController
