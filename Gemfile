@@ -7,6 +7,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'mongoid', '~> 6.1'
+gem 'bootstrap', '~> 4.0.0.beta2.1'
+gem 'jquery-rails'
+gem 'slim'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'pry-byebug'

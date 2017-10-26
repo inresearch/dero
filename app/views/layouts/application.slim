@@ -1,0 +1,52 @@
+html
+  head
+    title Dero
+    = csrf_meta_tags
+
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    meta name="description" content="Dero"
+    meta name="author" content="Dero"
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  body
+    .container-fluid#wrapper
+      .row
+        nav.sidebar.col-xs-12.col-sm-4.col-lg-3.col-xl-2.bg-faded.sidebar-style-1
+          h1.site-title
+            a href='#'
+              em.fa.fa-rocket
+              | Dero
+          a.btn.btn-default#menu-toggle href='#menu-toggle'
+            em.fa.fa-bars
+          ul.nav.nav-pills.flex-columns.sidebar-nav
+            li.nav-item
+              a.nav-link.active href='/'
+                em.fa.fa-dashboard
+                | Dashboard
+            li.nav-item
+              a.nav-link href='/'
+                em.fa.fa-bar-chart
+        main.col-xs-12.col-sm-8.offset-sm-4.col-lg-9.offset-lg-3.col-xl-10.offset-xl-2.pt-3.pl-4
+          header.page-header.row.justify-center
+            .col-md-6.col-lg-8
+              h1.float-left.text-center.text-md-left Dashboard
+            .dropdown.user-dropdown.col-md-6.col-lg-4.text-center.text-md-right
+              a#dropdownMenuLink.btn.btn-stripped.dropdown-toggle href='https://example.com' data-toggle='dropdown' aria-haspopup=true aria-expanded=false
+                img.circle.float-left.profile-photo src="/" alt='profile photo' width=50 height="auto"
+                .username.mt-1
+                  h4.mb-1 Username
+                  h6.text-muted Super Admin
+              .dropdown-menu.dropdown-menu-right style='margin-right: 1.5rem;' aria-labelledby='dropdownMenuLink'
+                a.dropdown-item
+                  em.fa.fa-user-circle.mr-1
+                  |View Profile
+                a.dropdown-item
+                  em.fa.fa-sliders.mr-1
+                  |Preferences
+                a.dropdown-item
+                  em.fa.fa-power-off.mr-1
+                  |Logout
+            .clear
+          = yield
